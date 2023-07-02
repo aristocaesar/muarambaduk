@@ -4,8 +4,10 @@ class Axios {
   static async get(path) {
     return await axios
       .get(`${process.env.API_URL}${path}`)
-      .then((success) => console.log(success))
-      .catch((errors) => console.log(errors));
+      .then((success) => success.data)
+      .catch((errors) => {
+        throw errors;
+      });
   }
 }
 

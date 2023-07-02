@@ -1,0 +1,60 @@
+<div class="flex justify-center py-8 md:py-24">
+    <div class="container flex flex-col space-y-10 lg:space-y-20 justify-center text-cod-gray-950">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-y-10 md:gap-y-0 md:gap-x-10">
+            <img src="<%= package_detail.image %>" alt="<%= package_detail.title %>" class="rounded">
+            <div class="md:col-span-3">
+                <h2 class="text-[2.2rem] font-semibold">PAKET <%= package_detail.title %></h2>
+                <p class="font-base text-[2.2rem] text-denim-600 mb-3"><%= package_detail.price %></p>
+                <p class="font-base mb-5 "><%= package_detail.description%></p>
+                <a href="<%= locale %>paket-camping/<%= package_detail.slug %>/checkout" class="flex justify-center items-center space-x-2 bg-denim-600 hover:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm mb-10">
+                    <span class="text-[0.9rem] md:text-[1rem] font-semibold">PESAN SEKARANG</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </a>
+                <p class="font-semibold">Item yang didapatkan</p>
+                <ul class="list-disc ml-3 mt-5 space-y-3 ">
+                    <% for(let index = 0; package_detail.products.length > index; index++) { %>
+                    <li><%= package_detail.products[index].title %> - <%= package_detail.products[index].quantity %></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <p class="font-semibold text-[1.2rem]">Ulasan Paket</p>
+            <% if(reviews.length == 0) { %>
+                <p class="text-center py-5 text-cod-gray-300">Belum ada ulasan</p>
+            <% } else { %>
+                <ul class="my-10">
+                    <% for(let index = 0; reviews.length > index; index++) { %>
+                    <li class="flex space-x-5">
+                        <img src="https://lh3.googleusercontent.com/a/AAcHTtcpuldOxuupk1_fq3kiHf3d4QzRVy7UvofIsQv6lQ=s96-c" alt="<%= reviews[index].fullname %>" class="w-[60px] h-[60px] rounded-full drop-shadow-sm">
+                        <div class="flex flex-col space-y-2">
+                            <p class="font-semibold"><%= reviews[index].fullname %></p>
+                            <div class="flex">
+                                <% for(let star = 1; 6 > star; star++) { %>
+                                    <% if(star <= parseInt(reviews[index].star)) { %>
+                                        <svg width="20" height="18" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.5 0L16.5309 9.32827H26.3393L18.4042 15.0935L21.4351 24.4217L13.5 18.6565L5.5649 24.4217L8.59584 15.0935L0.660737 9.32827H10.4691L13.5 0Z" fill="#F7AE40"/>
+                                        </svg>                                            
+                                    <% } else { %>
+                                        <svg width="20" height="18" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.5 1.61804L16.0554 9.48278L16.1677 9.82827H16.5309H24.8004L18.1103 14.689L17.8164 14.9025L17.9286 15.248L20.484 23.1127L13.7939 18.252L13.5 18.0385L13.2061 18.252L6.51596 23.1127L9.07137 15.248L9.18362 14.9025L8.88973 14.689L2.19958 9.82827H10.4691H10.8323L10.9446 9.48278L13.5 1.61804Z" stroke="#939393"/>
+                                        </svg>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <p class="text-cod-gray-500"><%= reviews[index].description %></p>
+                        </div>
+                    </li>
+                    <% } %>
+                </ul>
+                <div class="flex justify-center mt-20">
+                    <button class="bg-denim-600 hover:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm text-center px-5">
+                        <span class="text-[0.9rem] md:text-[1rem] font-semibold">Lihat Lebih Banyak</span>
+                    </button>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="flex justify-center py-28 md:py-24">
+    <div class="container flex flex-col items-center justify-center text-cod-gray-950 space-y-16">
+
+        <form action="" method="post" class="flex flex-col items-center">
+            <img src="<%= locale %>static/image/muarambaduk-logo-outline.png" alt="logo-muarambaduk" class="w-[300px]">
+            <h6 class="font-semibold text-[1.2rem] my-10">Syarat dan Ketentuan</h6>
+            <div class="max-w-2xl">
+                <%- terms_order.body %>
+            </div>
+            <div class="flex my-8 space-x-3 w-full">
+                <input id="checkbox-terms" type="checkbox" name="agree" id="checkox-terms" onclick="
+                    const checkbox = document.getElementById('checkbox-terms');
+                    const btnNext = document.getElementById('btn-next');
+                    if(checkbox.checked){
+                        console.log('true')
+                        btnNext.classList.remove('disabled:opacity-50');
+                        btnNext.disabled = false;
+                    }else{
+                        console.log('false')
+                        btnNext.classList.add('disabled:opacity-50');
+                        btnNext.disabled = true;
+                    }
+                ">
+                <p>Ya, Setuju</p>
+            </div>
+            <button id="btn-next" type="submit" class="w-full bg-denim-600 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50" disabled>Berikutnya</button>
+        </form>
+
+    </div>
+</div>

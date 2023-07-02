@@ -1,11 +1,74 @@
 <%- include('../partials/_head') %>
-<body>
+<body class="font-sans">
     <header>
         <%- include('../partials/_nav') %>
     </header>
     <main>
         <%- body %>
     </main>
+    <%- include('../partials/_footer') %>
     <script src="<%= locale %>static/js/main.js"></script>
+    <% if(title == 'Masuk') { %>
+    <script>
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: "135504900706-ahclqd1f3dlhjpikqijh7n7s1vliiant.apps.googleusercontent.com",
+                callback: (response) => console.log(response)
+            });
+            google.accounts.id.renderButton(
+                document.getElementById("btn-google"),
+                { theme: "outline", size: "large" } 
+            );
+            google.accounts.id.prompt();
+        }
+    </script>
+    <% } else if(title == 'Beranda') { %>
+    <script>
+        let testimonialIndex = 0;
+        function testimonialSlider(action) {
+        if (['prev', 'next'].includes(action)) {
+            const testimoni_description = document.getElementById(
+            'testimonial-description'
+            ).children;
+            const testimoni_images =
+            document.getElementById('testimonial-images').children;
+
+            if (testimoni_description != null || testimoni_images != null) {
+            for (let index = 0; index < testimoni_description.length; index++) {
+                testimoni_description[index].classList.remove('block');
+                testimoni_description[index].classList.add('hidden');
+            }
+            testimoni_description[testimonialIndex].classList.remove('hidden');
+            testimoni_description[testimonialIndex].classList.add('block');
+
+            for (let index = 0; index < testimoni_images.length; index++) {
+                testimoni_images[index].classList.remove('block');
+                testimoni_images[index].classList.add('hidden');
+            }
+            testimoni_images[testimonialIndex].classList.remove('hidden');
+            testimoni_images[testimonialIndex].classList.add('block');
+
+            if (action == 'next') {
+                testimonialIndex =
+                (testimonialIndex + 1) % testimoni_description.length;
+            } else {
+                testimonialIndex =
+                (testimonialIndex - 1 + testimoni_description.length) %
+                testimoni_description.length;
+            }
+            }
+        }
+        }
+        setInterval(() => {
+        testimonialSlider('next');
+        }, 9000);
+    </script>
+    <% } %>
+    <script>
+        flatpickr("#visit-datepicker", {
+          dateFormat: "d/M/Y",
+          minDate : new Date()
+        }).setDate(new Date());
+    </script>      
 </body>
 </html>

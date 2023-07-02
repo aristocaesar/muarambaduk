@@ -1,0 +1,33 @@
+<div class="flex justify-center py-28 md:py-24">
+    <div class="container flex flex-col items-center justify-center text-cod-gray-950">
+
+        <form action="" method="post" class="w-full space-y-8">
+            <div class="w-full">
+                <label for="datepicker" class="font-semibold text-[1.1rem]">Tanggal Berkunjung</label>
+                <p class="text-cod-gray-300 py-3">Masukkan tanggal dimana kamu akan berkunjung ke wisata muara mbaduk</p>
+                <div class="flex items-center border border-cod-gray-300">
+                    <svg class="ml-4" width="28" height="28" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="calendar">
+                        <path id="Vector" d="M27.7083 5.83334H7.29167C5.68084 5.83334 4.375 7.13918 4.375 8.75001V29.1667C4.375 30.7775 5.68084 32.0833 7.29167 32.0833H27.7083C29.3192 32.0833 30.625 30.7775 30.625 29.1667V8.75001C30.625 7.13918 29.3192 5.83334 27.7083 5.83334Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_2" d="M23.3335 2.91667V8.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_3" d="M11.6665 2.91667V8.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_4" d="M4.375 14.5833H30.625" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                    <input type="date" name="date" id="visit-datepicker" class="w-full rounded-sm py-3 px-4">
+                </div>
+            </div>
+    
+            <div class="w-full">
+                <label for="is-camping" class="font-semibold text-[1.1rem]">Apakah kamu akan melakukan kegiatan camping / berkemah ?</label>
+                <select name="camping" id="is-camping" class="border w-full rounded-sm mt-3 py-3 px-4 border-cod-gray-300 bg-white-50">
+                    <option value="true">Ya, Saya akan melakukan camping</option>
+                    <option value="false">Tidak</option>
+                </select>
+            </div>
+    
+            <button type="submit" class="w-full bg-denim-600 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50">Berikutnya</button>
+        </form>
+
+    </div>
+</div>

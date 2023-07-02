@@ -1,13 +1,76 @@
-<nav>
-    <ul>
-        <li>
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">Explore</a>
-        </li>
-        <li>
-            <a href="#">About</a>
-        </li>
-    </ul>
-</nav>
+<header class="flex flex-col items-center bg-[url('http://localhost:3000/static/image/muarambaduk-camping-ground.webp')] bg-no-repeat bg-center bg-cover">
+    <nav class="container flex justify-between py-6 items-center">
+        <a href="<%= locale %>">
+            <img src="<%= locale %>static/image/logo-muara-mbaduk.png" alt="logo-muara-mbaduk" width="100">
+        </a>
+        <svg id="toogleMenuNavbar" width="35" height="35" viewBox="0 0 25 25" fill="none" class="block md:hidden cursor-pointer" xmlns="http://www.w3.org/2000/svg">
+            <g id="menu">
+            <path id="Vector" d="M3.05518 12.7349H21.0552" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Vector_2" d="M3.05518 6.73486H21.0552" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Vector_3" d="M3.05518 18.7349H21.0552" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </svg>
+        <ul class="md:flex items-center text-white-50 text-sm hidden">
+            <li class="mr-10">
+                <a href="/" class="hover:text-white-200">Beranda</a>
+            </li>
+            <li class="mr-10">
+                <a href="/#eksplore" class="hover:text-white-200">Eksplore</a>
+            </li>
+            <li class="mr-10">
+                <a href="/paket-camping" class="hover:text-white-200">Paket Camping</a>
+            </li>
+            <li class="mr-10">
+                <a href="/tentang" class="hover:text-white-200">Tentang</a>
+            </li>
+            <li>
+                <a href="/masuk" class="bg-denim-600  hover:bg-denim-700 px-5 py-3 rounded-sm font-semibold">Masuk</a>
+            </li>
+        </ul>
+        <div id="navbarMobile" class="fixed bg-white-50 z-10 -right-full top-0 h-full w-full transition-all block md:hidden">
+            <svg id="toogleCloseNavbar" width="45" height="45" class="absolute top-7 right-7 cursor-pointer" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="x">
+                <path id="Vector" d="M18.376 6.26123L6.37598 18.2612" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Vector_2" d="M6.37598 6.26123L18.376 18.2612" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+            </svg>                        
+            <ul class="text-cod-gray-950 px-8 mt-8 text-lg space-y-5">
+                <li>
+                    <a href="/" class="hover:text-cod-gray-700">Beranda</a>
+                </li>
+                <li>
+                    <a href="/#eksplore" class="hover:text-cod-gray-700">Eksplore</a>
+                </li>
+                <li>
+                    <a href="/paket-camping" class="hover:text-cod-gray-700">Paket Camping</a>
+                </li>
+                <li class="pb-3">
+                    <a href="/tentang" class="hover:text-cod-gray-700">Tentang</a>
+                </li>
+                <li>
+                    <a href="/masuk" class="text-white-50 bg-denim-600  hover:bg-denim-700 px-5 py-2 rounded-sm font-semibold">Masuk</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <% if(name == 'Beranda') { %>
+    <div class="container text-white-50 py-40 space-y-4">
+        <h2 class="text-[1.1rem] md:text-[1.5rem]">Selamat Datang Di Muara Mbaduk</h2>
+        <h1 class="text-[2.2rem]/tight md:text-[3rem]/tight font-bold max-w-2xl">Nikmati Liburan yang Berbeda dengan Berkemah</h1>
+        <p class="text-[1rem] md:text-[1.1rem] max-w-lg font-light mb-5">Muara Mbaduk adalah kawasan wisata alam yang menyajikan pantai, perbukitan hingga tempat berkemah</p>
+        <a href="#paket" class="flex justify-center items-center space-x-2 bg-denim-600 hover:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm">
+            <span class="text-[0.9rem] md:text-[1rem] font-semibold">CAMPING SEKARANG</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+        </a>          
+    </div>
+    <% } else { %>
+    <div class="container text-white-50 py-28 md:py-40 text-center">
+        <h1 class="text-[2.2rem]/tight md:text-[3rem]/tight font-bold"><%= name %></h1>
+        <% if(summary != undefined) { %>
+            <p class="text-[1rem] md:text-[1.3rem] font-base mt-3"><%= summary %></p>
+        <% } %>
+    </div>
+    <% } %>
+</header>

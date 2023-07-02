@@ -1,1 +1,121 @@
-<h1>Hello Word</h1>
+<section id="eksplore" class="py-32 flex flex-col items-center">
+    <div class="container space-y-[5.2rem]">
+        <div class="flex flex-col md:flex-row justify-between space-y-3 md:space-y-0">
+            <h3 class="text-cod-gray-950 text-[1.8rem] md:text-[2rem] font-semibold md:max-w-md">Nikmati berbagai <span class="text-denim-600">pemandangan</span> yang indah</h3>
+            <p class="text-cod-gray-300 md:text-right md:max-w-xs">Dapatkan suasana pantai, perbukitan, sunrice, sunset dan sekaligus berkemah</p>
+        </div>
+        <div id="explore-images" class="flex flex-row md:justify-between overflow-hidden space-x-10">
+            <img src="<%= locale %>static/image/muarambaduk-dengan-drone.png" alt="muarambaduk-explore-1" class="drop-shadow-md rounded-sm lg:max-w-sm xl:max-w-lg">
+            <img src="<%= locale %>static/image/muarambaduk-camping.jpeg" alt="muarambaduk-explore-2" class="drop-shadow-md rounded-sm lg:max-w-sm xl:max-w-lg">
+        </div>
+    </div>
+</section>
+
+<section id="paket" class="py-32 bg-alabaster-50 flex flex-col items-center">
+    <div class="container">
+        <div class="flex flex-col items-center mb-14">
+            <h3 class="text-center text-cod-gray-950 text-[2rem] font-semibold max-w-md">Kami menyediakan <span class="text-denim-600">paket</span> untuk berkemah</h3>
+            <p class="text-cod-gray-300 max-w-lg text-center mt-3">Kamu tidak perlu bingung untuk memulai berkemah kami menyediakan berbagai kebutuhanya</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 xl:gap-x-20 gap-y-10 md:gap-y-5 lg:gap-y-0">
+            <% for(let index = 0; index < packages.length; index++) { %>
+            <div class="rounded-md drop-shadow-sm bg-white-50">
+                <img src="<%= packages[index].image %>" alt="<%= packages[index].slug %>" class="w-full h-[300px] object-cover rounded-t-md">
+                <div class="my-8 space-y-5 px-7 flex flex-col">
+                    <div class="text-center flex flex-col items-center">
+                        <h6 class="text-cod-gray-950 font-semibold text-[1.2rem]"><%= packages[index].title %></h6>
+                        <p class="font-base text-[1.25rem] text-denim-600 mb-5"><%= packages[index].price %></p>
+                        <hr class="w-[15.8rem] border-t-[0.06rem] border-cod-gray-200">
+                    </div>
+                    <ul>
+                        <% for(let index_product = 0; index_product < packages[index].products.length; index_product++) { %>
+                            <li class="flex items-center py-[0.44rem]">
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-[0.8rem]">
+                                    <g id="check-circle" clip-path="url(#clip0_85_4)">
+                                    <path id="Vector" d="M13.75 6.92504V7.50004C13.7492 8.8478 13.3128 10.1592 12.5058 11.2387C11.6989 12.3181 10.5646 13.1078 9.2721 13.49C7.97964 13.8721 6.59829 13.8262 5.33404 13.3592C4.0698 12.8921 2.99041 12.0288 2.25685 10.8982C1.52329 9.76756 1.17487 8.43008 1.26355 7.08523C1.35223 5.74039 1.87325 4.46024 2.74892 3.43571C3.6246 2.41117 4.80799 1.69715 6.12262 1.40013C7.43725 1.10311 8.81267 1.239 10.0438 1.78754" stroke="#1570BF" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_2" d="M13.75 2.5L7.5 8.75625L5.625 6.88125" stroke="#1570BF" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_85_4">
+                                    <rect width="15" height="15" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                                <p class="text-cod-gray-700 text-sm"><%= packages[index].products[index_product].title %></p>
+                            </li>
+                        <% } %>
+                    </ul>
+                    <a href="<%= locale %>paket-camping/<%= packages[index].slug %>" class="text-center rounded-md bg-denim-600 hover:bg-denim-700  text-white-50 py-[0.75rem]">Selengkapnya</a>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<section id="berita" class="py-32 flex flex-col items-center">
+    <div class="container">
+        <h3 class="text-center text-cod-gray-950 text-[2rem] font-semibold mb-14">Berita terbaru dari <span class="text-denim-600">Muara Mbaduk</span></h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-0 md:gap-y-0 md:gap-x-10 mb-[4.56rem]">
+            <% for(let index = 0; index < news.length; index++) { %>
+                <article class="rounded-md drop-shadow-sm bg-white-50 w-full lg:max-w-[30.1rem]">
+                    <img src="<%= news[index].thumbnail %>" alt="<%= news[index].slug %>" class="w-full h-[200px] rounded-t-md object-cover">
+                    <div class="p-[1.13rem] space-y-[0.58rem]">
+                        <span class="text-cod-gray-300"><%= news[index].created_at_formated %></span>
+                        <h1 class="text-sm md:text-base">
+                            <a class="font-semibold text-cod-gray-950 hover:text-cod-gray-700 text-[1.1rem]" href="<%= locale %>berita/<%= news[index].slug %>">
+                                <%= news[index].title %>
+                            </a>
+                        </h1>
+                        <p class="text-cod-gray-300 text-sm md:text-base"><%= news[index].summary %> <a href="<%= locale %>berita/<%= news[index].slug %>" class="hover:text-cod-gray-500"><u><i>Selengkapnya ...</i></u></a></p>  
+                    </div>
+                </article>
+            <% } %>
+        </div>
+        <div class="flex justify-center">
+            <a href="<%= locale %>berita" class="rounded-md bg-denim-600 hover:bg-denim-700 text-white-50 py-[0.75rem] px-[3.8rem]">Muat Lebih Banyak</a>
+        </div>
+    </div>
+</section>
+
+<section id="testimoni" class="py-32 bg-alabaster-50 flex flex-col items-center">
+    <div class="container grid grid-cols-1 md:grid-cols-3 space-x-0 md:space-x-5">
+        <div class="flex flex-col mb-14 space-y-5 col-span-2">
+            <h3 class="text-cod-gray-950 text-[2rem] font-semibold max-w-md">Kata <span class="text-denim-600">mereka</span> yang telah berkunjung</h3>
+            <div id="testimonial-description">
+                <div id="testimonial-1" class="block">
+                    <p class="text-cod-gray-300 max-w-xl text-[1.1rem]">Saya benar-benar menikmati perjalanan saya ke Muara Mbaduk dan saya sangat  merekomendasikan tempat ini untuk semua orang yang mencari pengalaman wisata yang berbeda dan menarik di Banyuwangi.</p>
+                    <p class="font-semibold text-cod-gray-950 mt-5">- Rendy Ardian</p>
+                </div>
+                <div id="testimonial-2" class="hidden">
+                    <p class="text-cod-gray-300 max-w-xl text-[1.1rem]">Sangat terkesan dengan fasilitas dan pelayanan yang diberikan di Wisata Alam Muara Mbaduk. Camping di sini memberikan pengalaman yang tak terlupakan. Suasana yang damai dan alam yang mempesona membuat liburan ini benar-benar sempurna. Saya akan merekomendasikan tempat ini kepada teman-teman saya.</p>
+                    <p class="font-semibold text-cod-gray-950 mt-5">- Galuh Dwi</p>
+                </div>
+                <div id="testimonial-3" class="hidden">
+                    <p class="text-cod-gray-300 max-w-xl text-[1.1rem]">Berkemah di Wisata Alam Muara Mbaduk benar-benar menakjubkan. Pemandangan yang indah, aktivitas petualangan, dan fasilitas yang lengkap membuat perjalanan ini sangat menyenangkan. Saya sangat senang bisa mengunjungi tempat ini dan pasti akan kembali.</p>
+                    <p class="font-semibold text-cod-gray-950 mt-5">- Fika Kartin</p>
+                </div>
+            </div>
+        </div>
+        <div id="testimonial-images" class="hidden md:block mt-4 md:mt-0">
+            <img src="<%= locale %>static/image/muarambaduk-testimoni-1.jpg" alt="muarambaduk-testimoni-1" width="350" class="max-h-xs rounded-md drop-shadow-sm block" id="image-testimonial-1">
+            <img src="<%= locale %>static/image/muarambaduk-testimoni-2.jpg" alt="muarambaduk-testimoni-1" width="350" class="max-h-xs rounded-md drop-shadow-sm hidden" id="image-testimonial-2">
+            <img src="<%= locale %>static/image/muarambaduk-testimoni-3.jpg" alt="muarambaduk-testimoni-1" width="350" class="max-h-xs rounded-md drop-shadow-sm hidden" id="image-testimonial-3">
+        </div>
+    </div>
+</section>
+
+<section id="hero" class="py-32 flex flex-col items-center">
+    <div class="container">
+        <div class="flex flex-col items-center text-center bg-gradient-to-r from-denim-800 to-denim-600 py-20 rounded-md">
+            <h3 class="text-[1.5rem] md:text-[2rem] font-semibold max-w-md text-white-50">Sekarang giliran kamu</h3>
+            <p class="text-white-100 font-light text-[1rem] md:text-[1.3rem] max-w-xs md:max-w-md">Untuk merasakan pengalaman wisata alam yang tak terlupakan di Muara Mbaduk</p>
+            <a href="#paket" class="flex justify-center items-center space-x-2 bg-denim-600 hover:bg-denim-700 text-white-50 py-3 px-5 rounded-md mt-5 md:mt-10">
+                <span class="text-[0.8rem] md:text-[1rem] font-semibold">CAMPING SEKARANG</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>

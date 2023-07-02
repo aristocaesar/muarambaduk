@@ -1,0 +1,25 @@
+<div class="flex justify-center py-8 md:py-24">
+    <div class="container flex flex-col justify-center text-cod-gray-950">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-0 md:gap-y-0 md:gap-x-10 mb-[4.56rem]">
+            <% for(let index = 0; index < news.length; index++) { %>
+                <article class="rounded-md drop-shadow-sm bg-white-50 w-full lg:max-w-[30.1rem]">
+                    <img src="<%= news[index].thumbnail %>" alt="<%= news[index].slug %>" class="w-full h-[200px] rounded-t-md object-cover">
+                    <div class="p-[1.13rem] space-y-[0.58rem]">
+                        <span class="text-cod-gray-300"><%= news[index].created_at_formated %></span>
+                        <h1 class="text-sm md:text-base">
+                            <a class="font-semibold text-cod-gray-950 hover:text-cod-gray-700 text-[1.1rem]" href="<%= locale %>berita/<%= news[index].slug %>">
+                                <%= news[index].title %>
+                            </a>
+                        </h1>
+                        <p class="text-cod-gray-300 text-sm md:text-base"><%= news[index].summary %> <a href="<%= locale %>berita/<%= news[index].slug %>" class="hover:text-cod-gray-500"><u><i>Selengkapnya ...</i></u></a></p>  
+                    </div>
+                </article>
+            <% } %>
+        </div>
+        <div class="flex justify-center">
+            <a href="<%= locale %>berita" class="rounded-md bg-denim-600 hover:bg-denim-700 text-white-50 py-[0.75rem] px-[3.8rem]">Muat Lebih Banyak</a>
+        </div>
+
+    </div>
+</div>

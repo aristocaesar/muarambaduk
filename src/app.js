@@ -17,6 +17,9 @@ app.set('layout', path.join(__dirname, 'views/layout/app'));
 app.locals.locale = process.env.BASE_URL;
 app.locals.summary = undefined;
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 // Routes
 app.use('/', RootRoutes);
 app.use('/dashboard', DashboardRoutes);

@@ -9,6 +9,15 @@ class Axios {
         throw errors;
       });
   }
+
+  static async post(path, body) {
+    return await axios
+      .post(`${process.env.API_URL}${path}`, body)
+      .then((success) => success.data)
+      .catch((errors) => {
+        throw errors.response;
+      });
+  }
 }
 
 module.exports = Axios;

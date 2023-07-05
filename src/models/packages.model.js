@@ -32,7 +32,8 @@ class PackagesModel {
       slug: this.slug,
       category: this.category,
       description: this.description,
-      price: Currency.IDR(this.price),
+      price: this.price,
+      price_formated: Currency.IDR(this.price),
       image: this.image,
       products:
         this.products.length == 0

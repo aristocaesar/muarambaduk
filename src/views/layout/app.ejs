@@ -1,28 +1,12 @@
 <%- include('../partials/_head') %>
 <body class="font-sans">
-    <header>
-        <%- include('../partials/_nav') %>
-    </header>
+    <%- include('../partials/_nav') %>
     <main>
         <%- body %>
     </main>
     <%- include('../partials/_footer') %>
     <script src="<%= locale %>static/js/main.js"></script>
-    <% if(title == 'Masuk') { %>
-    <script>
-        window.onload = function () {
-            google.accounts.id.initialize({
-                client_id: "135504900706-ahclqd1f3dlhjpikqijh7n7s1vliiant.apps.googleusercontent.com",
-                callback: (response) => console.log(response)
-            });
-            google.accounts.id.renderButton(
-                document.getElementById("btn-google"),
-                { theme: "outline", size: "large" } 
-            );
-            google.accounts.id.prompt();
-        }
-    </script>
-    <% } else if(title == 'Beranda') { %>
+    <% if(title == 'Beranda') { %>
     <script>
         let testimonialIndex = 0;
         function testimonialSlider(action) {
@@ -63,12 +47,15 @@
         testimonialSlider('next');
         }, 9000);
     </script>
-    <% } %>
+    <% } else if(title == 'Tanggal Kunjungan') { %>
+    <script src="<%= locale %>static/js/ticket-overview.js"></script>
+    <% } else if(title == 'Kustom Paket') { %>
     <script>
-        flatpickr("#visit-datepicker", {
-          dateFormat: "d/m/Y",
-          minDate : new Date()
+        flatpickr('#visit-datepicker', {
+            dateFormat: 'd/m/Y',
+            minDate: new Date(),
         });
-    </script>      
+    </script>
+    <% } %>
 </body>
 </html>

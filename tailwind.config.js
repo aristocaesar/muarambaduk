@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/views/**/*.{js,ejs}'],
+  content: ['./src/views/**/*.{js,ejs}', './src/public/**/*.svg'],
   theme: {
     colors: {
       'mountain-meadow': {

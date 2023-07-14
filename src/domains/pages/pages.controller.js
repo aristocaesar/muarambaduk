@@ -1,6 +1,7 @@
 const Axios = require('../../../config/axios');
 const NewsModel = require('../../models/news.model');
 const PackagesModel = require('../../models/packages.model');
+const ProductModel = require('../../models/product.model');
 const TicketModel = require('../../models/ticket.model');
 
 class PagesController {
@@ -36,6 +37,25 @@ class PagesController {
       summary: _package.title,
       package_detail: _package,
       reviews: _reviews,
+    });
+  }
+
+  static async packageCheckout(req, res, next) {
+    const { packages } = req.query;
+    res.redirect(`/dashboard/pemesanan/visit?checkout=${packages}`);
+  }
+
+  static async packageCustom(req, res, next) {
+    const _products = await Axios.get(`products`)
+      .then((response) =>
+        response.data.map((product) => new ProductModel(product).toJson())
+      )
+      .catch(() => []);
+
+    res.render('pages/packages/custom', {
+      title: 'Kustom Paket',
+      name: 'Buat Rencana Campingmu Sendiri',
+      products: _products,
     });
   }
 
@@ -88,8 +108,8 @@ class PagesController {
       .catch(() => []);
 
     res.render('pages/faq', {
-      title: 'Frequently Asked Questions',
-      name: 'Frequently Asked Questions',
+      title: 'Informasi dan Bantuan',
+      name: 'Informasi dan Bantuan',
       faq: _faq,
     });
   }
@@ -114,6 +134,26 @@ class PagesController {
       name: 'Pemesanan Tiket & Alat Camping',
       summary: 'Pesan tiket dan kebutuhan alat campingmu secara online',
     });
+  }
+
+  static async handleLogin(req, res, next) {
+    const { token } = req.body;
+    return await Axios.post('users/login', { token })
+      .then(async (user) => {
+        await Axios.post('users/account', {
+          token: user.data,
+        })
+          .then((success) => {
+            req.session.user = success.data;
+            return;
+          })
+          .catch((error) => {
+            throw error;
+          });
+      })
+      .catch((error) => {
+        return error;
+      });
   }
 
   static async news(req, res, next) {

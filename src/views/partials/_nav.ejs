@@ -23,9 +23,35 @@
             <li class="mr-10">
                 <a href="/tentang" class="hover:text-white-200">Tentang</a>
             </li>
+            <% if(user == undefined) { %>
             <li>
                 <a href="/masuk" class="bg-denim-600  hover:bg-denim-700 px-5 py-3 rounded-sm font-semibold">Masuk</a>
             </li>
+            <% } %>
+            <% if(user != undefined) { %>
+            <li class="relative">
+                <!-- Dropdown button -->
+                <button
+                    id="dropdown-button"
+                    type="button"
+                    class="bg-denim-600  hover:bg-denim-700 px-5 py-3 rounded-sm font-semibold"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    Halo, <%= user.displayName %>
+                </button>
+                
+                <!-- Dropdown menu -->
+                <div id="dropdown-menu" class="hidden origin-top-right absolute right-0 mt-2 w-48 bg-white-50 rounded-md text-cod-gray-800" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button">
+                    <div class="py-1" role="none">
+                        <a href="<%= locale %>dashboard" class="block px-4 py-2 text-sm hover:text-cod-gray-300" role="menuitem" tabindex="-1">Dashboard</a>
+                        <a href="<%= locale %>dashboard/pemesanan" class="block px-4 py-2 text-sm hover:text-cod-gray-300" role="menuitem" tabindex="-1">Pemesanan</a>
+                        <a href="<%= locale %>dashboard/riwayat-pemesanan" class="block px-4 py-2 text-sm hover:text-cod-gray-300" role="menuitem" tabindex="-1">Riwayat Pemesanan</a>
+                        <a href="<%= locale %>dashboard/keluar" class="block px-4 py-2 text-sm hover:text-cod-gray-300" role="menuitem" tabindex="-1">Keluar</a>
+                    </div>
+                </div>
+            </li>
+            <% } %>
         </ul>
         <div id="navbarMobile" class="fixed bg-white-50 z-10 -right-full top-0 h-full w-full transition-all block md:hidden">
             <svg id="toogleCloseNavbar" width="45" height="45" class="absolute top-7 right-7 cursor-pointer" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,6 +61,7 @@
                 </g>
             </svg>                        
             <ul class="text-cod-gray-950 px-8 mt-8 text-lg space-y-5">
+                <% if(user == undefined) { %>
                 <li>
                     <a href="/" class="hover:text-cod-gray-700">Beranda</a>
                 </li>
@@ -50,6 +77,26 @@
                 <li>
                     <a href="/masuk" class="text-white-50 bg-denim-600  hover:bg-denim-700 px-5 py-2 rounded-sm font-semibold">Masuk</a>
                 </li>
+                <% } else { %>
+                <li>
+                    <p class="text-denim-600 font-semibold border-b w-10/12 pb-3 border-cod-gray-300">Halo, <%= user.displayName %></p>
+                </li>
+                <li>
+                    <a href="/dashboard" class="hover:text-cod-gray-700">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/paket-camping" class="hover:text-cod-gray-700">Paket Camping</a>
+                </li>
+                <li>
+                    <a href="/dashboard/pemesanan" class="hover:text-cod-gray-700">Pemesanan</a>
+                </li>
+                <li>
+                    <a href="/dashboard/riwayat-pemesanan" class="hover:text-cod-gray-700">Riwayat Pemesanan</a>
+                </li>
+                <li class="pb-3">
+                    <a href="/dashboard/keluar" class="hover:text-cod-gray-700">Keluar</a>
+                </li>
+                <% } %>
             </ul>
         </div>
     </nav>

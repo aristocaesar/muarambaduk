@@ -1,0 +1,84 @@
+<div class="flex justify-center py-8 md:py-24">
+    <div class="container flex flex-col justify-center text-cod-gray-950">
+
+        <p class="font-semibold mb-8 text-[1.1rem]">Rencanakan camping paling pas untuk kamu dengan mengisi formulir dibawah ini</p>
+
+        <form action="" method="post" class="w-full">
+            <div class="w-full space-y-3 mb-5">
+                <label for="datepicker" class="text-[1.1rem]">Mau Camping Kapan?</label>
+                <div class="flex items-center border border-cod-gray-300">
+                    <svg class="ml-4" width="28" height="28" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="calendar">
+                        <path id="Vector" d="M27.7083 5.83334H7.29167C5.68084 5.83334 4.375 7.13918 4.375 8.75001V29.1667C4.375 30.7775 5.68084 32.0833 7.29167 32.0833H27.7083C29.3192 32.0833 30.625 30.7775 30.625 29.1667V8.75001C30.625 7.13918 29.3192 5.83334 27.7083 5.83334Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_2" d="M23.3335 2.91667V8.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_3" d="M11.6665 2.91667V8.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Vector_4" d="M4.375 14.5833H30.625" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                    <input type="date" name="date" id="visit-datepicker" class="w-full rounded-sm py-3 px-4" value="" placeholder="Pilih Tanggal Berkunjung" required>
+                </div>
+            </div>
+    
+            <div class="w-full space-y-3 mb-10">
+                <label for="fullname" class="text-[1.1rem]">Nama Lengkap</label>
+                <input type="text" name="fullname" id="fullname" placeholder="Ketikkan nama lengkap" class="w-full rounded-sm py-3 px-4 border border-cod-gray-300" required>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 mb-5">
+                <p class="font-semibold">Alat Yang Tersedia</p>
+                <p class="font-semibold text-right md:text-center">Jumlah</p>
+                <p class="font-semibold text-right hidden md:block">Harga Sewa</p>
+            </div>
+            <% for(let index = 0; products.length > index; index++) { %>
+            <div id="ticket-<%= products[index].id %>" class="pb-10 grid grid-cols-1 md:grid-cols-3 my-5 ">
+                <div class="flex space-x-4 justify-between">
+                    <div class="flex space-x-4">
+                        <img src="<%= products[index].image %>" alt="products[index].title %>" class="max-w-[100px] rounded-sm object-cover">
+                        <div class="flex flex-col w-9/12">
+                            <p class=""><%= products[index].title  %></p>  
+                            <p class="text-denim-600"><%= products[index].price_formated %></p>
+                        </div>
+                    </div>
+                    <div class="text-right block md:hidden">
+                        <input type="text" name="quantity" id="ticket-quantity<%= products[index].id %>" class="hidden">
+                        <p id="ticket-quantity-label<%= products[index].id %>" class="font-bold text-cod-gray-300">X 0</p>
+                    </div>                   
+                </div>
+                <div class="text-center hidden md:block">
+                    <p class="font-bold text-cod-gray-300">X 0</p>
+                </div>
+                <div class="flex flex-col items-end">
+                    <p>Rp.0</p>
+                    <div class="flex mt-4 space-x-3">
+                        <button type="button" class="bg-cod-gray-300 hover:bg-cod-gray-500 rounded-sm text-white-50 px-5 py-1">
+                            <svg fill="#FFFFFF" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 12L17 12" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="bg-denim-600 hover:bg-denim-800 rounded-sm text-white-50 px-5 py-1">
+                            <svg fill="#FFFFFF" width="30px" height="30px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9,17h6v6a1,1,0,0,0,2,0V17h6a1,1,0,0,0,0-2H17V9a1,1,0,0,0-2,0v6H9a1,1,0,0,0,0,2Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+            <div class="grid grid-cols-3 mb-10 pt-5">
+                <p></p>
+                <p class="font-bold text-cod-gray-300 text-center">Estimasi Biaya</p>
+                <p id="sub-total" class="text-[1.3rem] font-bold text-denim-600 text-right">Rp.0</p>
+            </div>
+
+            <div class="w-full space-y-3 flex flex-col">
+                <label for="note">Catatan untuk kami</label>
+                <textarea name="note" id="note" cols="10" rows="5" placeholder="Ketikkan sebuah catatan" class="border border-cod-gray-300 rounded-sm py-3 px-4" required></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-denim-600 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50 mt-10">Buat Rencara</button>
+
+        </form>
+
+    </div>
+</div>

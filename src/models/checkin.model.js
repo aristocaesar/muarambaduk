@@ -24,7 +24,9 @@ class CheckinModel {
           price_formated: Currency.IDR(ticket.price),
         };
       }),
-      packages: this.packages.map((pkg) => new PackagesModel(pkg).toJson()),
+      packages: this.packages
+        .map((pkg) => new PackagesModel(pkg).toJson())
+        .reverse(),
     };
   }
 }

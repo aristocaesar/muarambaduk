@@ -14,7 +14,7 @@
                         <path id="Vector_4" d="M4.375 14.5833H30.625" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
                     </svg>
-                    <input type="date" name="date" id="visit-datepicker" class="w-full rounded-sm py-3 px-4" value="<%= visit_overview.length == 0 ? dateNow : visit_overview.date %>" placeholder="Pilih Tanggal Berkunjung">
+                    <input type="date" name="date" id="visit-datepicker" class="w-full rounded-sm py-3 px-4" value="<%= visit_overview.date == undefined ? dateNow : visit_overview.date %>" placeholder="Pilih Tanggal Berkunjung">
                 </div>
             </div>
     
@@ -217,3 +217,18 @@
 
     </div>
 </div>
+
+<% if(checkout != undefined) {  %>
+<div id="modalInformasiPemesanan" class="fixed inset-0 justify-center flex z-50 text-cod-gray-950 drop-shadow-xl">
+    <div class="bg-white-50 rounded-lg p-8 w-10/12 lg:w-5/12 max-h-[25vh] mt-20">
+        <!-- Modal content -->
+        <h2 class="text-xl font-bold mb-4">Informasi Pemesanan</h2>
+        <p class="mb-6 text-cod-gray-300">Untuk melanjutkan pemesanan, harap mengisi informasi kunjungan terlebih dahulu.</p>
+        <div class="flex justify-end">
+            <button class="bg-denim-600 hover:bg-denim-800 text-white-50 font-semibold py-2 px-4 rounded" onclick="
+                document.getElementById('modalInformasiPemesanan').classList.add('hidden');
+            ">Oke</button>
+        </div>
+    </div>
+</div>  
+<% } %>

@@ -10,7 +10,7 @@ class DashboardController {
 
     res.render('dashboard/index', {
       title: 'Dashboard',
-      name: `Halo, ${'Aristo Caesar Pratama'}`,
+      name: `Halo, ${req.user.displayName}`,
       latest_information: _latestInformation,
     });
   }
@@ -32,7 +32,7 @@ class DashboardController {
   }
 
   static async visitDate(req, res, next) {
-    const { date, camping } = req.query;
+    const { date, camping, checkout } = req.query;
     let visit_overview = [];
     if (date != undefined || camping != undefined) {
       await Axios.post('tickets/checkin', {
@@ -49,13 +49,10 @@ class DashboardController {
     res.render('dashboard/visit-date', {
       title: 'Tanggal Kunjungan',
       name: 'Tanggal Kunjungan',
+      checkout,
       dateNow: new Dates().now(),
       visit_overview,
     });
-  }
-
-  static async handleVisitDate(req, res, next) {
-    res.end();
   }
 }
 

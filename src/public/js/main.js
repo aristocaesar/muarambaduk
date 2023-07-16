@@ -1,4 +1,4 @@
-console.info('muarambaduk.com powered by arekcreative.com');
+console.info(`${window.location.origin} powered by arekcreative.com`);
 
 const menuNavbar = document.getElementById('toogleMenuNavbar');
 const navbarMobile = document.getElementById('navbarMobile');
@@ -17,22 +17,23 @@ closeNavbar.addEventListener('click', () => {
 const dropdownButton = document.getElementById('dropdown-button');
 const dropdownMenu = document.getElementById('dropdown-menu');
 
-dropdownButton.addEventListener('click', function () {
-  const expanded = this.getAttribute('aria-expanded') === 'true' || false;
-  this.setAttribute('aria-expanded', !expanded);
-  dropdownMenu.classList.toggle('hidden');
-});
+if (dropdownButton != null) {
+  dropdownButton.addEventListener('click', function () {
+    const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+    this.setAttribute('aria-expanded', !expanded);
+    dropdownMenu.classList.toggle('hidden');
+  });
 
-// Close the dropdown when clicking outside of it
-document.addEventListener('click', function (event) {
-  const isClickInside =
-    dropdownButton.contains(event.target) ||
-    dropdownMenu.contains(event.target);
-  if (!isClickInside) {
-    dropdownButton.setAttribute('aria-expanded', false);
-    dropdownMenu.classList.add('hidden');
-  }
-});
+  document.addEventListener('click', function (event) {
+    const isClickInside =
+      dropdownButton.contains(event.target) ||
+      dropdownMenu.contains(event.target);
+    if (!isClickInside) {
+      dropdownButton.setAttribute('aria-expanded', false);
+      dropdownMenu.classList.add('hidden');
+    }
+  });
+}
 
 function faq(id) {
   const items = document.getElementById('faq-items').children;

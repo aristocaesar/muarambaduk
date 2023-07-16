@@ -43,7 +43,6 @@ app.use(express.json());
 // Init Session
 app.use((req, res, next) => {
   app.locals.user = req.user;
-  console.log(app.locals.user);
   next();
 });
 

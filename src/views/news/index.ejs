@@ -8,17 +8,16 @@
                     <div class="p-[1.13rem] space-y-[0.58rem]">
                         <span class="text-cod-gray-300"><%= news[index].created_at_formated %></span>
                         <h1 class="text-sm md:text-base">
-                            <a class="font-semibold text-cod-gray-950 hover:text-cod-gray-700 text-[1.1rem]" href="<%= locale %>berita/<%= news[index].slug %>">
+                            <a class="font-semibold text-cod-gray-950 hover:text-cod-gray-700 text-[0.9rem] md:text-[1.1rem]" href="<%= locale %>berita/<%= news[index].slug %>">
                                 <%= news[index].title %>
                             </a>
-                        </h1>
-                        <p class="text-cod-gray-300 text-sm md:text-base"><%= news[index].summary %> <a href="<%= locale %>berita/<%= news[index].slug %>" class="hover:text-cod-gray-500"><u><i>Selengkapnya ...</i></u></a></p>  
+                        </h1> 
                     </div>
                 </article>
             <% } %>
         </div>
         <div class="flex justify-center">
-            <a href="<%= locale %>berita" class="rounded-md bg-denim-600 hover:bg-denim-700 text-white-50 py-[0.75rem] px-[3.8rem]">Muat Lebih Banyak</a>
+            <a href="<%= locale %>berita" class="rounded-md bg-denim-600 hover:bg-denim-700 text-white-50 py-[0.75rem] px-[3.8rem] text-[0.9rem] md:text-base">Muat Lebih Banyak</a>
         </div>
 
     </div>

@@ -1,7 +1,7 @@
 <section id="eksplore" class="py-32 flex flex-col items-center">
     <div class="container space-y-[5.2rem]">
         <div class="flex flex-col md:flex-row justify-between space-y-3 md:space-y-0">
-            <h3 class="text-cod-gray-950 text-[1.8rem] md:text-[2rem] font-semibold md:max-w-md">Nikmati berbagai <span class="text-denim-600">pemandangan</span> yang indah</h3>
+            <h3 class="text-cod-gray-950 text-[1.6rem] md:text-[2rem] font-semibold md:max-w-md">Nikmati berbagai <span class="text-denim-600">pemandangan</span> yang indah</h3>
             <p class="text-cod-gray-300 md:text-right md:max-w-xs">Dapatkan suasana pantai, perbukitan, sunrice, sunset dan sekaligus berkemah</p>
         </div>
         <div id="explore-images" class="flex flex-row md:justify-between space-x-10">
@@ -14,7 +14,7 @@
 <section id="paket" class="py-32 bg-alabaster-50 flex flex-col items-center">
     <div class="container">
         <div class="flex flex-col items-center mb-14">
-            <h3 class="text-center text-cod-gray-950 text-[2rem] font-semibold max-w-md">Kami menyediakan <span class="text-denim-600">paket</span> untuk berkemah</h3>
+            <h3 class="text-center text-cod-gray-950 text-[1.6rem] md:text-[2rem] font-semibold max-w-md">Kami menyediakan <span class="text-denim-600">paket</span> untuk berkemah</h3>
             <p class="text-cod-gray-300 max-w-lg text-center mt-3">Kamu tidak perlu bingung untuk memulai berkemah kami menyediakan berbagai kebutuhanya</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 xl:gap-x-20 gap-y-10 md:gap-y-5 lg:gap-y-0">
@@ -45,7 +45,7 @@
                             </li>
                         <% } %>
                     </ul>
-                    <a href="<%= locale %>paket-camping/<%= packages[index].slug %>" class="text-center rounded-md bg-denim-600 hover:bg-denim-700  text-white-50 py-[0.75rem]">Selengkapnya</a>
+                    <a href="<%= locale %>paket-camping/<%= packages[index].slug %>" class="text-center rounded-md bg-denim-600 hover:bg-denim-700  text-white-50 py-[0.75rem] text-[0.9rem] md:text-base">Selengkapnya</a>
                 </div>
             </div>
             <% } %>
@@ -55,7 +55,7 @@
 
 <section id="berita" class="py-32 flex flex-col items-center">
     <div class="container">
-        <h3 class="text-center text-cod-gray-950 text-[2rem] font-semibold mb-14">Berita terbaru dari <span class="text-denim-600">Muara Mbaduk</span></h3>
+        <h3 class="text-center text-cod-gray-950 text-[1.6rem] md:text-[2rem] font-semibold mb-14">Berita terbaru dari <span class="text-denim-600">Muara Mbaduk</span></h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-0 md:gap-y-0 md:gap-x-10 mb-[4.56rem]">
             <% for(let index = 0; index < news.length; index++) { %>
                 <article class="rounded-md drop-shadow-sm bg-white-50 w-full lg:max-w-[30.1rem]">
@@ -63,7 +63,7 @@
                     <div class="p-[1.13rem] space-y-[0.58rem]">
                         <span class="text-cod-gray-300"><%= news[index].created_at_formated %></span>
                         <h1 class="text-sm md:text-base">
-                            <a class="font-semibold text-cod-gray-950 hover:text-cod-gray-700 text-[1.1rem]" href="<%= locale %>berita/<%= news[index].slug %>">
+                            <a class="font-semibold text-cod-gray-950 hover:text-cod-gray-700 text-[0.9rem] md:text-[1.1rem]" href="<%= locale %>berita/<%= news[index].slug %>">
                                 <%= news[index].title %>
                             </a>
                         </h1>
@@ -72,7 +72,7 @@
             <% } %>
         </div>
         <div class="flex justify-center">
-            <a href="<%= locale %>berita" class="rounded-md bg-denim-600 hover:bg-denim-700 text-white-50 py-[0.75rem] px-[3.8rem]">Muat Lebih Banyak</a>
+            <a href="<%= locale %>berita" class="rounded-md bg-denim-600 hover:bg-denim-700 text-white-50 py-[0.75rem] px-[3.8rem] text-[0.9rem] md:text-base">Muat Lebih Banyak</a>
         </div>
     </div>
 </section>
@@ -80,10 +80,10 @@
 <section id="testimoni" class="py-32 bg-alabaster-50 flex flex-col items-center">
     <div class="container grid grid-cols-1 md:grid-cols-3 space-x-0 md:space-x-5">
         <div class="flex flex-col mb-14 space-y-5 col-span-2">
-            <h3 class="text-cod-gray-950 text-[2rem] font-semibold max-w-md">Kata <span class="text-denim-600">mereka</span> yang telah berkunjung</h3>
+            <h3 class="text-cod-gray-950 text-[1.6rem] md:text-[2rem] font-semibold max-w-md">Kata <span class="text-denim-600">mereka</span> yang telah berkunjung</h3>
             <div id="testimonial-description">
                 <div id="testimonial-1" class="block">
-                    <p class="text-cod-gray-300 max-w-xl text-[1.1rem]">Saya benar-benar menikmati perjalanan saya ke Muara Mbaduk dan saya sangat  merekomendasikan tempat ini untuk semua orang yang mencari pengalaman wisata yang berbeda dan menarik di Banyuwangi.</p>
+                    <p class="text-cod-gray-300 max-w-xl text-[1rem] md:text-[1.1rem]">Saya benar-benar menikmati perjalanan saya ke Muara Mbaduk dan saya sangat  merekomendasikan tempat ini untuk semua orang yang mencari pengalaman wisata yang berbeda dan menarik di Banyuwangi.</p>
                     <p class="font-semibold text-cod-gray-950 mt-5">- Rendy Ardian</p>
                 </div>
                 <div id="testimonial-2" class="hidden">
@@ -98,8 +98,8 @@
         </div>
         <div id="testimonial-images" class="hidden md:block mt-4 md:mt-0">
             <img src="<%= locale %>static/image/muarambaduk-testimoni-1.jpg" alt="muarambaduk-testimoni-1" width="350" class="max-h-xs rounded-md drop-shadow-sm block" id="image-testimonial-1">
-            <img src="<%= locale %>static/image/muarambaduk-testimoni-2.jpg" alt="muarambaduk-testimoni-1" width="350" class="max-h-xs rounded-md drop-shadow-sm hidden" id="image-testimonial-2">
-            <img src="<%= locale %>static/image/muarambaduk-testimoni-3.jpg" alt="muarambaduk-testimoni-1" width="350" class="max-h-xs rounded-md drop-shadow-sm hidden" id="image-testimonial-3">
+            <img src="<%= locale %>static/image/muarambaduk-testimoni-2.jpg" alt="muarambaduk-testimoni-2" width="350" class="max-h-xs rounded-md drop-shadow-sm hidden" id="image-testimonial-2">
+            <img src="<%= locale %>static/image/muarambaduk-testimoni-3.jpg" alt="muarambaduk-testimoni-3" width="350" class="max-h-xs rounded-md drop-shadow-sm hidden" id="image-testimonial-3">
         </div>
     </div>
 </section>
@@ -107,8 +107,8 @@
 <section id="hero" class="py-32 flex flex-col items-center">
     <div class="container">
         <div class="flex flex-col items-center text-center bg-gradient-to-r from-denim-800 to-denim-600 py-20 rounded-md">
-            <h3 class="text-[1.5rem] md:text-[2rem] font-semibold max-w-md text-white-50">Sekarang giliran kamu</h3>
-            <p class="text-white-100 font-light text-[1rem] md:text-[1.3rem] max-w-xs md:max-w-md">Untuk merasakan pengalaman wisata alam yang tak terlupakan di Muara Mbaduk</p>
+            <h3 class="text-[1.4rem] md:text-[2rem] font-semibold max-w-md text-white-50">Sekarang giliran kamu</h3>
+            <p class="text-white-100 font-light text-[0.8rem] md:text-[1.3rem] max-w-xs md:max-w-md">Untuk merasakan pengalaman wisata alam yang tak terlupakan di Muara Mbaduk</p>
             <a href="#paket" class="flex justify-center items-center space-x-2 bg-denim-600 hover:bg-denim-700 text-white-50 py-3 px-5 rounded-md mt-5 md:mt-10">
                 <span class="text-[0.8rem] md:text-[1rem] font-semibold">CAMPING SEKARANG</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">

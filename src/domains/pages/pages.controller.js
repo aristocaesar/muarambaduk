@@ -133,6 +133,7 @@ class PagesController {
       title: 'Masuk',
       name: 'Pemesanan Tiket & Alat Camping',
       summary: 'Pesan tiket dan kebutuhan alat campingmu secara online',
+      error: req.flash('error'),
     });
   }
 

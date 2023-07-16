@@ -28,11 +28,10 @@ Router.get(
 Router.get(
   '/auth/google/callback',
   passport.authenticate('google', {
+    successRedirect: '/dashboard',
     failureRedirect: '/masuk',
-  }),
-  (req, res, next) => {
-    res.redirect('/dashboard');
-  }
+    failureFlash: true,
+  })
 );
 
 Router.get('/berita', PagesController.news);

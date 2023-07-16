@@ -3,6 +3,7 @@ const express = require('express');
 const expressLayout = require('express-ejs-layouts');
 const path = require('path');
 const session = require('express-session');
+const flash = require('connect-flash');
 const RootRoutes = require('./domains/landing/landing.routes');
 const DashboardRoutes = require('./domains/dashboard/dashboard.routes');
 const Authentication = require('./middleware/authentication');
@@ -17,6 +18,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayout);
 app.set('layout', path.join(__dirname, 'views/layout/app'));
 
+app.use(flash());
 app.use(
   session({
     secret: `${process.env.SECRET_SESSION}`,
@@ -41,6 +43,7 @@ app.use(express.json());
 // Init Session
 app.use((req, res, next) => {
   app.locals.user = req.user;
+  console.log(app.locals.user);
   next();
 });
 

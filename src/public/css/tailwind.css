@@ -8,4 +8,8 @@ header {
 
 input:focus, textarea:focus  {
     outline: none;
-  }
+}
+
+ul {
+  list-style-type: disc;
+}

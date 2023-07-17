@@ -3,7 +3,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-y-10 md:gap-y-0 md:gap-x-10">
             <img src="<%= package_detail.image %>" alt="<%= package_detail.title %>" class="rounded">
             <div class="md:col-span-3">
-                <h2 class="text-[2.2rem] font-semibold">PAKET <%= package_detail.title %></h2>
+                <h2 class="text-[2rem] sm:text-[2.2rem] font-semibold">PAKET <%= package_detail.title %></h2>
                 <p class="font-base text-[2.2rem] text-denim-600 mb-3"><%= package_detail.price_formated %></p>
                 <p class="font-base mb-5 "><%= package_detail.description%></p>
                 <a href="<%= locale %>paket-camping/<%= package_detail.slug %>/checkout?packages=<%= package_detail.title %>" class="flex justify-center items-center space-x-2 bg-denim-600 hover:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm mb-10">
@@ -30,7 +30,7 @@
                     <li class="flex space-x-5">
                         <img src="<%= reviews[index].images %>" alt="<%= reviews[index].fullname %>" class="w-[60px] h-[60px] rounded-full drop-shadow-sm">
                         <div class="flex flex-col space-y-2">
-                            <p class="font-semibold"><%= reviews[index].fullname %></p>
+                            <p class="font-semibold text-sm md:text-base"><%= reviews[index].fullname %></p>
                             <div class="flex">
                                 <% for(let star = 1; 6 > star; star++) { %>
                                     <% if(star <= parseInt(reviews[index].star)) { %>
@@ -44,14 +44,14 @@
                                     <% } %>
                                 <% } %>
                             </div>
-                            <p class="text-cod-gray-500"><%= reviews[index].description %></p>
+                            <p class="text-cod-gray-500 text-sm md:text-base"><%= reviews[index].description %></p>
                         </div>
                     </li>
                     <% } %>
                 </ul>
-                <div class="flex justify-center mt-20">
+                <div class="flex justify-center mt-8">
                     <button class="bg-denim-600 hover:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm text-center px-5">
-                        <span class="text-[0.9rem] md:text-[1rem] font-semibold">Lihat Lebih Banyak</span>
+                        <span class="text-[0.9rem] md:text-[1rem] font-semibold">Muat Lebih Banyak</span>
                     </button>
                 </div>
             <% } %>

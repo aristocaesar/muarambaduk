@@ -1,6 +1,13 @@
 class Authentication {
   static checkLogin(req, res, next) {
     if (!req.user) {
+      const path = req.path;
+      if (path == '/paket-camping/kustom') {
+        req.flash(
+          'error',
+          'Silakan masuk terlebih dahulu untuk membuat rencana campingmu'
+        );
+      }
       return res.redirect('/masuk');
     }
     next();

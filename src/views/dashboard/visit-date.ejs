@@ -1,10 +1,24 @@
 <div class="flex justify-center py-8 md:py-24">
     <div class="container flex flex-col items-center justify-center text-cod-gray-950">
 
+        <% if(error.length != 0) { %>
+        <div class="w-full mb-10 border border-cod-gray-300 py-3 text-cod-gray-800 font-semibold rounded-sm">
+            <div class="flex border-b border-cod-gray-300 px-3 space-x-2 pb-3">
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 17V11" stroke="#333333" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="1" cy="1" r="1" transform="matrix(1 0 0 -1 11 9)" fill="#333333"/>
+                    <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#333333" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>Informasi</span>
+            </div>
+            <p class="px-3 pt-3 text-sm md:text-base font-normal"><%= error %></p>
+        </div>
+        <% } %>
+
         <form action="#ticket-overview" method="get" class="w-full space-y-8">
             <div class="w-full">
                 <label for="datepicker" class="font-semibold text-[1.1rem]">Tanggal Berkunjung</label>
-                <p class="text-cod-gray-300 py-3">Masukkan tanggal dimana kamu akan berkunjung ke wisata muara mbaduk</p>
+                <p class="text-cod-gray-300 py-3 text-sm md:text-base">Pilih tanggal kamu akan berlibur ke muara mbaduk</p>
                 <div class="flex items-center border border-cod-gray-300">
                     <svg class="ml-4" width="28" height="28" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="calendar">
@@ -14,19 +28,19 @@
                         <path id="Vector_4" d="M4.375 14.5833H30.625" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
                     </svg>
-                    <input type="date" name="date" id="visit-datepicker" class="w-full rounded-sm py-3 px-4" value="<%= visit_overview.date == undefined ? dateNow : visit_overview.date %>" placeholder="Pilih Tanggal Berkunjung">
+                    <input type="text" name="date" id="datepicker" class="w-full rounded-sm py-3 px-4 text-sm md:text-base" value="<%= visit_overview.date == undefined ? dateNow : visit_overview.date %>" placeholder="Pilih Tanggal Berkunjung" readonly required>
                 </div>
             </div>
     
             <div class="w-full">
-                <label for="is-camping" class="font-semibold text-[1.1rem]">Apakah kamu akan melakukan kegiatan camping / berkemah ?</label>
-                <select name="camping" id="is-camping" class="border w-full rounded-sm mt-3 py-3 px-4 border-cod-gray-300 bg-white-50">
-                    <option value="true" <%= visit_overview.camping == true ? 'selected' : '' %> >Ya, Saya akan melakukan camping</option>
+                <label for="is-camping" class="font-semibold">Apakah kamu akan melakukan camping ?</label>
+                <select name="camping" id="is-camping" class="border w-full rounded-sm mt-3 py-3 px-4 border-cod-gray-300 bg-white-50 text-sm md:text-base">
+                    <option value="true" <%= visit_overview.camping == true ? 'selected' : '' %> >Ya, Saya akan camping</option>
                     <option value="false" <%= visit_overview.camping == false ? 'selected' : '' %> >Tidak</option>
                 </select>
             </div>
     
-            <button type="submit" class="w-full bg-denim-600 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50">Cek tiket dan harga</button>
+            <button type="submit" class="w-full bg-denim-600 hover:bg-denim-800 focus:bg-denim-800 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50 text-sm md:text-base">Cek tiket dan harga</button>
         </form>
 
         <% if(visit_overview.length != 0) { %>
@@ -114,20 +128,20 @@
                                 </svg>
                                 <% } %>
                                 <div class="flex flex-col">
-                                    <p class="text-denim-600"><%= visit_overview.tickets[index].price_formated %></p>                     
+                                    <p class="text-sm md:text-base text-denim-600"><%= visit_overview.tickets[index].price_formated %></p>                     
                                     <p class="text-cod-gray-300 text-sm md:text-base"><%= visit_overview.tickets[index].category == 'tourist' ? 'Wisatawan' : visit_overview.tickets[index].title  %></p>  
                                 </div>
                             </div>
                             <div class="text-right block md:hidden">
                                 <input type="text" name="quantity" id="ticket-quantity<%= visit_overview.tickets[index].id %>" class="hidden">
-                                <p id="ticket-quantity-label<%= visit_overview.tickets[index].id %>" class="font-bold text-cod-gray-300">X 0</p>
+                                <p id="ticket-quantity-label<%= visit_overview.tickets[index].id %>" class="font-bold text-cod-gray-300 text-sm md:text-base">X 0</p>
                             </div>                   
                         </div>
                         <div class="text-center hidden md:block">
-                            <p class="font-bold text-cod-gray-300">X 0</p>
+                            <p class="font-bold text-cod-gray-300 text-sm md:text-base">X 0</p>
                         </div>
                         <div class="flex flex-col items-end">
-                            <p>Rp.0</p>
+                            <p class="text-sm md:text-base">Rp.0</p>
                             <div class="flex mt-4 space-x-3">
                                 <button type="button" class="bg-cod-gray-300 hover:bg-cod-gray-500 rounded-sm text-white-50 px-5 py-1">
                                     <svg fill="#FFFFFF" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -145,30 +159,31 @@
                     <% } %>
 
                     <% if(visit_overview.camping) { %>
-                    <p class="text-[1.1rem] my-6">Paket Camping Yang Tersedia</p>
+                    <p class="text-sm md:text-[1.1rem] my-6">Paket Camping Yang Tersedia</p>
 
                     <% for(let index = 0; visit_overview.packages.length > index; index++) { %>
                     <div class="pb-10 border-b border-cod-gray-300 grid grid-cols-1 md:grid-cols-3 my-5 ">
                         <div class="flex space-x-4 justify-between">
-                            <div class="flex space-x-4">
-                                <img src="<%= visit_overview.packages[index].image %>" alt="visit_overview.packages[index].title %>" class="w-3/12 rounded-sm">
-                                <div class="flex flex-col justify-between">
+                            <div class="flex space-x-4 w-full">
+                                <img src="<%= visit_overview.packages[index].image %>" alt="visit_overview.packages[index].title %>" class="max-w-[60px] md:max-w-[100px] object-cover rounded-sm">
+                                <div class="flex flex-col justify-between ">
                                     <div>
-                                        <p class="font-semibold"><%= visit_overview.packages[index].title  %></p>  
-                                        <p class="text-denim-600"><%= visit_overview.packages[index].price_formated %></p>
+                                        <p class="text-sm md:text-base font-semibold"><%= visit_overview.packages[index].title  %></p>  
+                                        <p class="text-sm md:text-base text-denim-600"><%= visit_overview.packages[index].price_formated %></p>
                                     </div>                     
-                                    <a href="<%= locale %>paket-camping/<%= visit_overview.packages[index].slug %>" type="button" class="text-sm text-cod-gray-300">Lihat Selengkapnya</a>               
+                                    <a href="<%= locale %>paket-camping/<%= visit_overview.packages[index].slug %>" type="button" class="text-sm text-cod-gray-300 hidden md:block">Lihat Selengkapnya</a>
+                                    <a href="<%= locale %>paket-camping/<%= visit_overview.packages[index].slug %>" type="button" class="text-sm text-cod-gray-300 block md:hidden">Lihat Detail</a>               
                                 </div>
                             </div>
                             <div class="text-right block md:hidden w-4/12">
-                                <p class="font-bold text-cod-gray-300">X 0</p>
+                                <p class="font-bold text-cod-gray-300 text-sm md:text-base">X 0</p>
                             </div>
                         </div>
                         <div class="text-center hidden md:block">
-                            <p class="font-bold text-cod-gray-300">X 0</p>
+                            <p class="font-bold text-cod-gray-300 text-sm md:text-base">X 0</p>
                         </div>
                         <div class="flex flex-col items-end">
-                            <p>Rp.0</p>
+                            <p class="text-sm md:text-base">Rp.0</p>
                             <div class="flex mt-4 space-x-3">
                                 <button type="button" class="bg-cod-gray-300 hover:bg-cod-gray-500 rounded-sm text-white-50 px-5 py-1">
                                     <svg fill="#FFFFFF" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -186,13 +201,13 @@
                     <% } %>
                     <% } %>
 
-                    <div class="grid grid-cols-3 mb-4 pt-5">
+                    <div class="grid grid-cols-3 mb-4 pt-5 items-center">
                         <p></p>
-                        <p class="font-bold text-cod-gray-300 text-center">Sub Total</p>
-                        <p id="sub-total" class="text-[1.3rem] font-bold text-denim-600 text-right">Rp.0</p>
+                        <p class="font-bold text-cod-gray-300 text-center text-sm md:text-base">Sub Total</p>
+                        <p id="sub-total" class="text-sm md:text-[1.3rem] font-bold text-denim-600 text-right">Rp.0</p>
                     </div>
 
-                    <button type="submit" class="w-full bg-denim-600 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50 mt-10"><%= visit_overview.camping == true ? 'Berikutnya' : 'Lanjut Pembayaran' %></button>
+                    <button type="submit" class="text-sm md:text-base w-full bg-denim-600 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50 mt-10"><%= visit_overview.camping == true ? 'Berikutnya' : 'Lanjut Pembayaran' %></button>
 
                 </form>
             </div>
@@ -217,18 +232,3 @@
 
     </div>
 </div>
-
-<% if(checkout != undefined) {  %>
-<div id="modalInformasiPemesanan" class="fixed inset-0 justify-center flex z-50 text-cod-gray-950 drop-shadow-xl">
-    <div class="bg-white-50 rounded-lg p-8 w-10/12 lg:w-5/12 max-h-[225px] mt-20">
-        <!-- Modal content -->
-        <h2 class="text-xl font-bold mb-4">Informasi Pemesanan</h2>
-        <p class="mb-6 text-cod-gray-300">Untuk melanjutkan pemesanan, harap mengisi informasi kunjungan terlebih dahulu.</p>
-        <div class="flex justify-end">
-            <button class="bg-denim-600 hover:bg-denim-800 text-white-50 font-semibold py-2 px-4 rounded" onclick="
-                document.getElementById('modalInformasiPemesanan').classList.add('hidden');
-            ">Oke</button>
-        </div>
-    </div>
-</div>  
-<% } %>

@@ -6,7 +6,7 @@
                 <h2 class="text-[2rem] sm:text-[2.2rem] font-semibold">PAKET <%= package_detail.title %></h2>
                 <p class="font-base text-[2.2rem] text-denim-600 mb-3"><%= package_detail.price_formated %></p>
                 <p class="font-base mb-5 "><%= package_detail.description%></p>
-                <a href="<%= locale %>paket-camping/<%= package_detail.slug %>/checkout?packages=<%= package_detail.title %>" class="flex justify-center items-center space-x-2 bg-denim-600 hover:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm mb-10">
+                <a href="<%= locale %>paket-camping/<%= package_detail.slug %>/checkout?packages=<%= package_detail.title %>" class="flex justify-center items-center space-x-2 bg-denim-600 hover:bg-denim-700 focus:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm mb-10">
                     <span class="text-[0.9rem] md:text-[1rem] font-semibold">PESAN SEKARANG</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -50,7 +50,7 @@
                     <% } %>
                 </ul>
                 <div class="flex justify-center mt-8">
-                    <button class="bg-denim-600 hover:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm text-center px-5">
+                    <button class="bg-denim-600 hover:bg-denim-700 focus:bg-denim-700 text-white-50 py-3 max-w-[14.5rem] rounded-sm text-center px-5">
                         <span class="text-[0.9rem] md:text-[1rem] font-semibold">Muat Lebih Banyak</span>
                     </button>
                 </div>

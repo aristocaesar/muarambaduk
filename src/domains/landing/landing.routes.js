@@ -7,7 +7,16 @@ const passport = require('passport');
 Router.get('/', LandingController.index);
 
 Router.get('/paket-camping', PagesController.packages);
-Router.get('/paket-camping/kustom', PagesController.packageCustom);
+Router.get(
+  '/paket-camping/kustom',
+  Authentication.checkLogin,
+  PagesController.packageCustom
+);
+Router.post(
+  '/paket-camping/kustom',
+  Authentication.checkLogin,
+  PagesController.requestPackageCustom
+);
 Router.get('/paket-camping/:slug/checkout', PagesController.packageCheckout);
 Router.get('/paket-camping/:slug', PagesController.packagesDetail);
 

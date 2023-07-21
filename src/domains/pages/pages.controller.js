@@ -3,6 +3,7 @@ const NewsModel = require('../../models/news.model');
 const PackagesModel = require('../../models/packages.model');
 const ProductModel = require('../../models/product.model');
 const TicketModel = require('../../models/ticket.model');
+const Dates = require('../../utils/date');
 
 class PagesController {
   static async packages(req, res, next) {
@@ -42,6 +43,10 @@ class PagesController {
 
   static async packageCheckout(req, res, next) {
     const { packages } = req.query;
+    req.flash(
+      'error',
+      'Untuk melanjutkan pemesanan, harap mengisi informasi kunjungan dibawah ini.'
+    );
     res.redirect(`/dashboard/pemesanan/visit?checkout=${packages}`);
   }
 
@@ -56,7 +61,25 @@ class PagesController {
       title: 'Kustom Paket',
       name: 'Buat Rencana Campingmu Sendiri',
       products: _products,
+      dateNow: new Dates().now(),
     });
+  }
+
+  static async requestPackageCustom(req, res, next) {
+    const { date, fullname, note, ...products } = req.body;
+    const email = req.user.emails[0].value;
+
+    const productSelected = Object.keys(products)
+      .filter((key) => products[key] !== '0')
+      .map(
+        (key, index) => `${index + 1}. ${key} ( Quantity : ${products[key]})`
+      )
+      .join('\n');
+
+    res.redirect(
+      301,
+      `https://api.whatsapp.com/send?phone=${process.env.NUMBER_PHONE}&text=Halo%20Muarambaduk%2C%20Saya%20${fullname}%20(%20${email}%20).%0A%0ASaya%20ingin%20melakukan%20pemesanan%20paket%20camping%20untuk%20tanggal%20${date}.%20Berikut%20adalah%20daftar%20peralatan%20yang%20ingin%20saya%20pesan%3A%0A%0A${productSelected}%0A%0ACatatan%20%3A%20${note}%0A%0AMohon%20konfirmasi%20ketersediaan%20peralatan%20dan%20total%20biaya%20pemesanannya.%0ATerima%20kasih.`
+    );
   }
 
   static async about(req, res, next) {

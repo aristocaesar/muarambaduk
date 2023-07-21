@@ -48,14 +48,10 @@
         }, 9000);
     </script>
     <% } else if(title == 'Tanggal Kunjungan') { %>
-    <script src="<%= locale %>static/js/ticket-overview.js"></script>
+    <script src="<%= locale %>static/js/datepicker.js"></script>
     <% } else if(title == 'Kustom Paket') { %>
-    <script>
-        flatpickr('#visit-datepicker', {
-            dateFormat: 'd/m/Y',
-            minDate: new Date(),
-        });
-    </script>
+    <script src="<%= locale %>static/js/custom-package.js"></script>
+    <script src="<%= locale %>static/js/datepicker.js"></script>
     <% } %>
 </body>
 </html>

@@ -52,6 +52,7 @@ class DashboardController {
       checkout,
       dateNow: new Dates().now(),
       visit_overview,
+      error: req.flash('error'),
     });
   }
 }

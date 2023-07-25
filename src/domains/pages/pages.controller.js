@@ -42,12 +42,15 @@ class PagesController {
   }
 
   static async packageCheckout(req, res, next) {
-    const { packages } = req.query;
-    req.flash(
-      'error',
-      'Untuk melanjutkan pemesanan, harap mengisi informasi kunjungan dibawah ini.'
-    );
-    res.redirect(`/dashboard/pemesanan/visit?checkout=${packages}`);
+    if (req.user) {
+      req.flash(
+        'error',
+        'Untuk melanjutkan pemesanan, harap mengisi informasi kunjungan dibawah ini.'
+      );
+    } else {
+      req.flash('error', 'Harap masuk terlebih dahulu untuk membuat pesanan.');
+    }
+    res.redirect(`/dashboard/pemesanan/visit`);
   }
 
   static async packageCustom(req, res, next) {

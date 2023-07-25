@@ -15,6 +15,27 @@ class DashboardController {
     });
   }
 
+  static async historyPayment(req, res, next) {
+    res.render('dashboard/payment-history', {
+      title: 'Riwayat Pemesanan',
+      name: 'Riwayat Pemesanan',
+    });
+  }
+
+  static async identity(req, res, next) {
+    res.render('dashboard/ticket-identity', {
+      title: 'Detail Wisatawan',
+      name: 'Detail Wisatawan',
+    });
+  }
+
+  static async overview(req, res, next) {
+    res.render('dashboard/payment-overview', {
+      title: 'Rincian Pemesanan',
+      name: 'Rincian Pemesanan',
+    });
+  }
+
   static async termsOfService(req, res, next) {
     const _termsOrder = await Axios.get('pages/terms-order')
       .then((response) => response.data)
@@ -54,6 +75,44 @@ class DashboardController {
       visit_overview,
       error: req.flash('error'),
     });
+  }
+
+  static async handleCheckin(req, res, next) {
+    const { date, date_types, camping, ...ticketsPackages } = req.body;
+    const tickets = Object.keys(ticketsPackages).reduce((acc, key) => {
+      if (key.includes('ticket')) {
+        const newKey = key.substring(7);
+        acc[newKey] = ticketsPackages[key];
+      }
+      return acc;
+    }, {});
+    const packages = Object.keys(ticketsPackages).reduce((acc, key) => {
+      if (key.includes('package')) {
+        const newKey = key.substring(8);
+        acc[newKey] = ticketsPackages[key];
+      }
+      return acc;
+    }, {});
+
+    res.cookie(
+      'checkin',
+      {
+        date,
+        date_types,
+        camping,
+        tickets,
+        packages,
+      },
+      {
+        maxAge: 3600000,
+      }
+    );
+
+    if (camping == 'true') {
+      res.redirect('/dashboard/pemesanan/identity');
+    } else {
+      res.redirect('/dashboard/pemesanan/overview');
+    }
   }
 }
 

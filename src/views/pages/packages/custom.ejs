@@ -35,8 +35,8 @@
                     <div class="flex space-x-4">
                         <img src="<%= products[index].image %>" alt="products[index].title %>" class="max-w-[100px] rounded-sm object-cover">
                         <div class="flex flex-col w-9/12">
-                            <input type="text" class="hidden" id="name-product-<%= products[index].id  %>" name="<%= products[index].title  %>" value="0">
-                            <input type="text" class="hidden" id="price-product-<%= products[index].id  %>" value="<%= products[index].price  %>">
+                            <input type="text" class="hidden" id="name-product-<%= products[index].id  %>" name="<%= products[index].title  %>" value="0" autocomplete="off">
+                            <input type="text" class="hidden" id="price-product-<%= products[index].id  %>" value="<%= products[index].price  %>" autocomplete="off">
 
                             <p class=""><%= products[index].title  %></p>  
                             <p class="text-denim-600"><%= products[index].price_formated %></p>
@@ -68,7 +68,7 @@
             <% } %>
 
             <div class="grid grid-cols-2 md:grid-cols-3 mb-10 pt-5 items-center">
-                <input type="text" class="hidden" id="input-estimated-costs" value="0">
+                <input type="text" class="hidden" id="input-estimated-costs" value="0" autocomplete="off">
                 <p class="hidden md:block"></p>
                 <p class="font-bold text-cod-gray-300 text-left md:text-center">Estimasi Biaya</p>
                 <p id="estimated-costs" class="text-[1.3rem] font-bold text-denim-600 text-right">Rp.0</p>

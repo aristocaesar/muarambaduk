@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const RootRoutes = require('./domains/landing/landing.routes');
@@ -18,6 +19,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayout);
 app.set('layout', path.join(__dirname, 'views/layout/app'));
 
+app.use(cookieParser());
 app.use(flash());
 app.use(
   session({

@@ -5,7 +5,7 @@ class Authentication {
       if (path == '/paket-camping/kustom') {
         req.flash(
           'error',
-          'Silakan masuk terlebih dahulu untuk membuat rencana campingmu'
+          'Harap masuk terlebih dahulu untuk membuat pesanan.'
         );
       }
       return res.redirect('/masuk');

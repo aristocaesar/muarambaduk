@@ -30,12 +30,14 @@ Router.get('/tiket', PagesController.ticket);
 Router.get('/masuk', Authentication.isLogin, PagesController.login);
 Router.get(
   '/auth/google',
+  Authentication.isLogin,
   passport.authenticate('google', {
     scope: ['email', 'profile'],
   })
 );
 Router.get(
   '/auth/google/callback',
+  Authentication.isLogin,
   passport.authenticate('google', {
     successRedirect: '/dashboard',
     failureRedirect: '/masuk',

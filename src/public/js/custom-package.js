@@ -45,12 +45,12 @@ function incrementProduct(id) {
       parseInt(inputEstimatedCost.value) + parseInt(price.value);
     inputEstimatedCost.value = totalEstimatedCost;
     estimatedCost.innerText = IDR(totalEstimatedCost);
-  }
 
-  if (parseInt(inputEstimatedCost.value) == 0) {
-    btnRequest.disabled = true;
-  } else {
-    btnRequest.disabled = false;
+    if (parseInt(inputEstimatedCost.value) == 0) {
+      btnRequest.disabled = true;
+    } else {
+      btnRequest.disabled = false;
+    }
   }
 }
 
@@ -83,11 +83,11 @@ function decrementProduct(id) {
       parseInt(inputEstimatedCost.value) - parseInt(price.value);
     inputEstimatedCost.value = totalEstimatedCost;
     estimatedCost.innerText = IDR(totalEstimatedCost);
-  }
 
-  if (parseInt(inputEstimatedCost.value) == 0) {
-    btnRequest.disabled = true;
-  } else {
-    btnRequest.disabled = false;
+    if (parseInt(inputEstimatedCost.value) == 0) {
+      btnRequest.disabled = true;
+    } else {
+      btnRequest.disabled = false;
+    }
   }
 }

@@ -1,5 +1,7 @@
 const Axios = require('../../../config/axios');
 const CheckinModel = require('../../models/checkin.model');
+const { PaymentModel } = require('../../models/payment.model');
+const { PaymentDetailModel } = require('../../models/payment_detail.model');
 const Dates = require('../../utils/date');
 
 class DashboardController {
@@ -16,10 +18,75 @@ class DashboardController {
   }
 
   static async historyPayment(req, res, next) {
+    const { id_user: user } = req.user;
+    const _paymentsHistory = await Axios.get(`payments/user/${user}`)
+      .then((response) =>
+        response.data.map((transaction) =>
+          new PaymentModel(transaction).toJson()
+        )
+      )
+      .catch(() => []);
+
     res.render('dashboard/payment-history', {
       title: 'Riwayat Pemesanan',
       name: 'Riwayat Pemesanan',
+      history: _paymentsHistory,
     });
+  }
+
+  static async showHistoryPayment(req, res, next) {
+    const { id: order_id } = req.params;
+    const _paymentHistory = await Axios.get(`payments/${order_id}`)
+      .then((response) => new PaymentDetailModel(response.data).toJson())
+      .catch(() => []);
+
+    if (_paymentHistory.length == 0)
+      return res.redirect('/dashboard/riwayat-pemesanan');
+
+    const _reviews = await Axios.get(`reviews/payment/${_paymentHistory.id}`)
+      .then((response) => response.data)
+      .catch(() => []);
+
+    res.render('dashboard/payment-detail', {
+      title: `Pembayaran - ${order_id}`,
+      name: 'Pembayaran',
+      summary: order_id,
+      history: _paymentHistory,
+      review: _reviews,
+      message: req.flash('message'),
+    });
+  }
+
+  static async reviewStore(req, res, next) {
+    const { id: order_id } = req.params;
+    const { id_package, id_payment, star, description } = req.body;
+    const { id_user } = req.user;
+
+    await Axios.post(`reviews`, {
+      id_package: id_package.split('_'),
+      id_payment,
+      id_user,
+      star,
+      description,
+    })
+      .then(() => req.flash('message', 'Berhasil menambahkan sebuah ulasan!'))
+      .catch(() => []);
+
+    res.redirect(`/dashboard/riwayat-pemesanan/${order_id}`);
+  }
+
+  static async reviewUpdate(req, res, next) {
+    const { id: order_id } = req.params;
+    const { id_payment, star, description } = req.body;
+
+    await Axios.put(`reviews/${id_payment}`, {
+      star,
+      description,
+    })
+      .then(() => req.flash('message', 'Berhasil memperbarui ulasan!'))
+      .catch(() => []);
+
+    res.redirect(`/dashboard/riwayat-pemesanan/${order_id}`);
   }
 
   static async identity(req, res, next) {

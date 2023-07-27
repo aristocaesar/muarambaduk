@@ -3,8 +3,8 @@
 
         <form action="" method="post" class="flex flex-col items-center">
             <img src="<%= locale %>static/image/muarambaduk-logo-outline.png" alt="logo-muarambaduk" class="w-[200px] md:w-[300px]">
-            <h6 class="font-semibold text-[1.2rem] my-10 text-center">Syarat dan Ketentuan Pemesanan</h6>
-            <div class="max-w-2xl">
+            <h6 class="font-semibold text-md md:text-lg my-10 text-center">Syarat dan Ketentuan Pemesanan</h6>
+            <div class="text-sm md:text-base max-w-2xl ml-3">
                 <%- terms_order.body %>
             </div>
             <div class="flex my-8 space-x-3 w-full">
@@ -21,9 +21,9 @@
                         btnNext.disabled = true;
                     }
                 ">
-                <p>Ya, Setuju</p>
+                <p class="text-sm md:text-base">Ya, Setuju</p>
             </div>
-            <button id="btn-next" type="submit" class="w-full bg-denim-600 hover:bg-denim-800 focus:bg-denim-800 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50" disabled>Berikutnya</button>
+            <button id="btn-next" type="submit" class="w-full bg-denim-600 hover:bg-denim-800 focus:bg-denim-800 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50 text-sm md:text-base" disabled>Berikutnya</button>
         </form>
 
     </div>

@@ -1,11 +1,11 @@
 <div class="flex justify-center py-8 md:py-24">
     <div class="container flex flex-col justify-center text-cod-gray-950">
 
-        <p class="font-semibold mb-8 text-[1.1rem]">Rencanakan camping paling pas untuk kamu dengan mengisi formulir dibawah ini</p>
+        <p class="font-semibold mb-5 text-sm md:text-base">Rencanakan camping paling pas untuk kamu dengan mengisi formulir dibawah ini</p>
 
         <form action="" method="post" class="w-full">
             <div class="w-full space-y-3 mb-5">
-                <label for="datepicker" class="text-[1.1rem]">Mau Camping Kapan?</label>
+                <label for="datepicker" class="text-sm md:text-base">Mau Camping Kapan?</label>
                 <div class="flex items-center border border-cod-gray-300">
                     <svg class="ml-4" width="28" height="28" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="calendar">
@@ -15,25 +15,25 @@
                         <path id="Vector_4" d="M4.375 14.5833H30.625" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
                     </svg>
-                    <input type="text" name="date" id="datepicker" class="w-full rounded-sm py-3 px-4" value="<%= dateNow %>" placeholder="Pilih Tanggal Berkunjung" readonly required>
+                    <input type="text" name="date" id="datepicker" class="w-full rounded-sm py-3 px-4 text-sm md:text-base" value="<%= dateNow %>" placeholder="Pilih Tanggal Berkunjung" readonly required>
                 </div>
             </div>
     
             <div class="w-full space-y-3 mb-10">
-                <label for="fullname" class="text-[1.1rem]">Nama Lengkap</label>
-                <input type="text" name="fullname" id="fullname" placeholder="Ketikkan nama lengkap" class="w-full rounded-sm py-3 px-4 border border-cod-gray-300" value="<%= user.displayName %>" readonly required>
+                <label for="fullname" class="text-sm md:text-base">Nama Lengkap</label>
+                <input type="text" name="fullname" id="fullname" placeholder="Ketikkan nama lengkap" class="w-full rounded-sm py-3 px-4 border border-cod-gray-300 text-sm md:text-base" value="<%= user.displayName %>" readonly required>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 mb-5">
+            <div class="grid grid-cols-2 md:grid-cols-3 mb-5 text-sm md:text-base">
                 <p class="font-semibold">Alat Yang Tersedia</p>
                 <p class="font-semibold text-right md:text-center">Jumlah</p>
                 <p class="font-semibold text-right hidden md:block">Harga Sewa</p>
             </div>
             <% for(let index = 0; products.length > index; index++) { %>
-            <div id="ticket-<%= products[index].id %>" class="pb-10 grid grid-cols-1 md:grid-cols-3 my-5 ">
+            <div id="ticket-<%= products[index].id %>" class="pb-10 grid grid-cols-1 md:grid-cols-3 my-5 text-sm md:text-base">
                 <div class="flex space-x-4 justify-between">
                     <div class="flex space-x-4">
-                        <img src="<%= products[index].image %>" alt="products[index].title %>" class="max-w-[100px] rounded-sm object-cover">
+                        <img src="<%= products[index].image %>" alt="products[index].title %>" class="max-w-[70px] sm:max-w-[100px] rounded-sm object-cover">
                         <div class="flex flex-col w-9/12">
                             <input type="text" class="hidden" id="name-product-<%= products[index].id  %>" name="<%= products[index].title  %>" value="0" autocomplete="off">
                             <input type="text" class="hidden" id="price-product-<%= products[index].id  %>" value="<%= products[index].price  %>" autocomplete="off">
@@ -67,19 +67,19 @@
             </div>
             <% } %>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 mb-10 pt-5 items-center">
+            <div class="grid grid-cols-2 md:grid-cols-3 mb-10 pt-5 items-center text-sm md:text-base">
                 <input type="text" class="hidden" id="input-estimated-costs" value="0" autocomplete="off">
                 <p class="hidden md:block"></p>
-                <p class="font-bold text-cod-gray-300 text-left md:text-center">Estimasi Biaya</p>
-                <p id="estimated-costs" class="text-[1.3rem] font-bold text-denim-600 text-right">Rp.0</p>
+                <p class="font-semibold text-cod-gray-300 text-left md:text-center">Estimasi Biaya</p>
+                <p id="estimated-costs" class="font-semibold text-denim-600 text-right">Rp.0</p>
             </div>
 
-            <div class="w-full space-y-3 flex flex-col">
+            <div class="w-full space-y-3 flex flex-col text-sm md:text-base">
                 <label for="note">Catatan untuk kami</label>
                 <textarea name="note" id="note" cols="10" rows="5" placeholder="Ketikkan sebuah catatan" class="border border-cod-gray-300 rounded-sm py-3 px-4"></textarea>
             </div>
             
-            <button type="submit" id="btn-request" class="w-full bg-denim-600 hover:bg-denim-800 active:bg-denim-800 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50 mt-10 flex items-center justify-center space-x-2" disabled>
+            <button type="submit" id="btn-request" class="w-full bg-denim-600 hover:bg-denim-800 active:bg-denim-800 rounded-sm text-white-50 py-3 font-semibold disabled:opacity-50 mt-10 flex items-center justify-center space-x-2 text-sm md:text-base" disabled>
                 <svg fill="#FFFFFF" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 308 308" xml:space="preserve">
                     <g id="XMLID_468_">
                         <path id="XMLID_469_" d="M227.904,176.981c-0.6-0.288-23.054-11.345-27.044-12.781c-1.629-0.585-3.374-1.156-5.23-1.156

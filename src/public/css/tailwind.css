@@ -13,3 +13,7 @@ input:focus, textarea:focus  {
 ul {
   list-style-type: disc;
 }
+
+ul li {
+  margin-bottom: 0.5rem;
+}

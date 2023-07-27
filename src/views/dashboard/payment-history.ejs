@@ -1,0 +1,68 @@
+<div class="flex justify-center py-8 md:py-24">
+    <div class="container flex flex-col items-center justify-center text-cod-gray-950">
+
+        <% if(history.length > 0) { %>
+        <% for(let index = 0; history.length > index; index++) { %>
+        <div class="flex justify-between <%= history.length != index+1 && history.length > 1 ? 'border-b border-cod-gray-300' : '' %> pb-5 w-full mb-5">
+            <div class="flex items-center space-x-3">
+                <svg class="w-[50px] md:w-[70px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.5 12.5C19.5 11.12 20.62 10 22 10V9C22 5 21 4 17 4H7C3 4 2 5 2 9V9.5C3.38 9.5 4.5 10.62 4.5 12C4.5 13.38 3.38 14.5 2 14.5V15C2 19 3 20 7 20H17C21 20 22 19 22 15C20.62 15 19.5 13.88 19.5 12.5Z" stroke="#292D32" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 4L10 20" stroke="#292D32" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5"/>
+                </svg>
+                <div class="flex flex-col space-y-1">
+                    <div class="<%= history[index].status == 'pending' ? 
+                    'text-yellow-500' : 
+                    history[index].status == 'settlement' ?
+                    'text-mountain-meadow-500' : 'text-red-500'
+                    %> rounded-sm block md:hidden text-[0.8rem]">
+                        <%= history[index].status == 'pending' ? 
+                            'Menunggu Pembayaran' : 
+                            history[index].status == 'settlement' ?
+                            'Sudah Dibayar' : 
+                            history[index].status == 'expire' ?
+                            'Pembayaran Kadaluarsa' : 'Pembayaran Gagal'
+                        %>
+                    </div>
+                    <h6 class="text-sm md:text-base font-semibold text-denim-600"><%= history[index].order_id %></h6>
+                    <p class="text-sm md:text-base"><%= history[index].date_formated %></p>
+                    <div class="block md:hidden">
+                        <p class="text-sm md:text-base text-cod-gray-300"><%= history[index].gross_amount_formated %></p>
+                        <p class="text-sm text-cod-gray-300"><%= history[index].type == 'cash' ? 'Bayar Ditempat' : 'Bank Transfer' %></p>
+                    </div>
+                </div>                
+            </div>
+            <div class="flex items-center">
+                <div class="flex-col hidden md:block space-y-1">
+                    <div class="<%= history[index].status == 'pending' ? 
+                    'text-yellow-500' : 
+                    history[index].status == 'settlement' ?
+                    'text-mountain-meadow-500' : 'text-red-500'
+                    %> rounded-sm text-right text-[0.8rem]">
+                        <%= history[index].status == 'pending' ? 
+                            'Menunggu Pembayaran' : 
+                            history[index].status == 'settlement' ?
+                            'Sudah Dibayar' : 
+                            history[index].status == 'expire' ?
+                            'Pembayaran Kadaluarsa' : 'Pembayaran Gagal'
+                        %>
+                    </div>
+                    <p class="text-right text-sm text-cod-gray-300"><%= history[index].type == 'cash' ? 'Bayar Ditempat' : 'Bank Transfer' %> - <%= history[index].gross_amount_formated %></p>
+                </div>
+                <a href="<%= locale %>dashboard/riwayat-pemesanan/<%= history[index].order_id %>">
+                    <svg class="w-[40px] md:w-[60px] hover:opacity-50 focus:opacity-50" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+                        <path d="M36 24.0083H12" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M24 12L36 24L24 36" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <% } %>
+        <% } else { %>
+        <div class="text-cod-gray-300 p-5">
+            Belum ada riwayat pemesanan
+        </div>
+        <% } %>
+
+    </div>
+</div>

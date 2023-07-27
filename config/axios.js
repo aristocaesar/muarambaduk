@@ -18,6 +18,15 @@ class Axios {
         throw errors.response;
       });
   }
+
+  static async put(path, body) {
+    return await axios
+      .put(`${process.env.API_URL}${path}`, body)
+      .then((success) => success.data)
+      .catch((errors) => {
+        throw errors.response;
+      });
+  }
 }
 
 module.exports = Axios;

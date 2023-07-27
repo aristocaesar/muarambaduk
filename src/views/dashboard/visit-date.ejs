@@ -17,7 +17,7 @@
 
         <form action="#ticket-overview" method="get" class="w-full space-y-8">
             <div class="w-full">
-                <label for="datepicker" class="font-semibold text-[1.1rem]">Tanggal Berkunjung</label>
+                <label for="datepicker" class="font-semibold text-sm md:text-[1.1rem]">Tanggal Berkunjung</label>
                 <p class="text-cod-gray-300 py-3 text-sm md:text-base">Pilih tanggal kamu akan berlibur ke muara mbaduk</p>
                 <div class="flex items-center border border-cod-gray-300">
                     <svg class="ml-4" width="28" height="28" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +33,7 @@
             </div>
     
             <div class="w-full">
-                <label for="is-camping" class="font-semibold">Apakah kamu akan melakukan camping ?</label>
+                <label for="is-camping" class="font-semibold text-sm md:text-[1.1rem]">Apakah kamu akan melakukan camping ?</label>
                 <select name="camping" id="is-camping" class="border w-full rounded-sm mt-3 py-3 px-4 border-cod-gray-300 bg-white-50 text-sm md:text-base">
                     <option value="true" <%= visit_overview.camping == true ? 'selected' : '' %> >Ya, Saya akan camping</option>
                     <option value="false" <%= visit_overview.camping == false ? 'selected' : '' %> >Tidak</option>
@@ -222,12 +222,12 @@
 
         <% if(visit_overview.camping) { %>
         <div class="rounded-sm flex flex-col lg:flex-row justify-between border-[1px] border-cod-gray-200 text-cod-gray-950 p-10 space-y-4 lg:space-y-0 w-full mt-10">
-            <div>
+            <div class="text-sm md:text-base">
                 <h6 class="font-semibold mb-1">Belum menemukan paket yang sesuai dengan kebutuhanmu ?</h6>
                 <p class="text-cod-gray-800">Tenang, kamu bisa membuat pesanan paket spesial sendiri</p>
             </div>
             <a href="<%= locale %>paket-camping/kustom" class="flex items-center space-x-3 justify-center rounded-md bg-denim-600 hover:bg-denim-700  text-white-50 py-[0.75rem] px-[3rem]">
-                <span class="text-[0.9rem] md:text-[1rem] font-semibold">Buat Paket</span>
+                <span class="text-sm md:text-base font-semibold">Buat Paket</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                 </svg>

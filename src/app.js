@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const compression = require('compression');
 const expressLayout = require('express-ejs-layouts');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -11,6 +12,8 @@ const Authentication = require('./middleware/authentication');
 const passport = require('passport');
 require('../config/passport');
 const app = express();
+
+app.use(compression());
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
